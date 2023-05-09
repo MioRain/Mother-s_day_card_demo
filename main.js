@@ -19,7 +19,6 @@ function init() {
   )
 
   camera.position.set(0, 0, 50)
-  camera.lookAt(scene.position)
   scene.add(camera)
 
   const loadingManager = new THREE.LoadingManager(() => {
@@ -260,14 +259,6 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
-  //
-
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.target.set(0, 2, 0);
-  controls.update();
-
-  //
-
   window.addEventListener('resize', onWindowResize, false);
 
 }
@@ -282,26 +273,18 @@ function onWindowResize() {
 }
 
 function animate() {
-
   requestAnimationFrame(animate);
   render();
-
 }
 
 function render() {
-
-
   renderer.render(scene, camera);
-
 }
 
 function onTransitionEnd(event) {
-
   const element = event.target;
   element.remove();
-
 }
-
 
 function envAnimation() {
   switch (animationStep) {
